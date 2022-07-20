@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import './App.css';
 
 const App = () => {
     const[result, setResult] = useState("");
+    const inputRef = useRef((null));
+
+    useEffect(() => inputRef.current.focus());
 
     const handleClick = (e) => {
             setResult(result.concat(e.target.name))
@@ -24,7 +27,7 @@ const App = () => {
         <>
         <div className="container">
              <form>
-                  <input type='text' value={result} />
+                  <input type='text' value={result} ref ={inputRef}/>
              </form>
 
              <div className="keypad">
