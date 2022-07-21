@@ -1,14 +1,12 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 import './App.css';
 
 const App = () => {
     const[result, setResult] = useState("");
-    const inputRef = useRef((null));
-
-    useEffect(() => inputRef.current.focus());
+    
 
     const handleClick = (e) => {
-            setResult(result.concat(e.target.name))
+            setResult(result.concat(e.target.name));
     }
     const clear = () => {
             setResult("");
@@ -19,7 +17,7 @@ const App = () => {
     const calculate = () => {
         try{
             setResult(eval(result).toString());
-        }catch(err){
+        }catch(error){
             setResult("Error");
         }
     }
@@ -27,7 +25,7 @@ const App = () => {
         <>
         <div className="container">
              <form>
-                  <input type='text' value={result} ref ={inputRef}/>
+                  <input type='text' value={result} />
              </form>
 
              <div className="keypad">
